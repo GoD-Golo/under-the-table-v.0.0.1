@@ -1,6 +1,9 @@
 import type { Metadata } from "next";
+
 import localFont from "next/font/local";
 import "./globals.css";
+
+import { Providers } from "./providers";
 
 const geistSans = localFont({
   src: "./fonts/GeistVF.woff",
@@ -25,11 +28,13 @@ export default function RootLayout({
   children: React.ReactNode;
 }>) {
   return (
-    <html lang="en">
+    <html className="utt-dark" lang="en">
       <body
         className={`${geistSans.variable} ${geistMono.variable} antialiased`}
       >
-        {children}
+        <Providers>
+          <div className="utt-dark">{children}</div>
+        </Providers>
       </body>
     </html>
   );

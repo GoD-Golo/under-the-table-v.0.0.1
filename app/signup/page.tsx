@@ -1,9 +1,10 @@
 "use client";
 import { useState } from "react";
+import { Input } from "@nextui-org/input";
+import { Button } from "@nextui-org/react";
 
 import Navbar from "@/components/Navbar";
 import { NavbarButtons } from "@/types/navbar";
-import StyledInput from "@/components/ui/StyledInput";
 import { supabase } from "@/lib/supabase";
 
 const buttons: NavbarButtons[] = [
@@ -23,9 +24,7 @@ export default function SignUp() {
   const [error, setError] = useState<string | null>(null);
   const [success, setSuccess] = useState<string | null>(null);
 
-  const signup = async (e: React.FormEvent<HTMLFormElement>) => {
-    e.preventDefault();
-    console.log(credentials);
+  const signup = async () => {
     try {
       let { data, error } = await supabase.auth.signUp({
         email: credentials.email,
@@ -46,8 +45,7 @@ export default function SignUp() {
         setError("Unexpected error. Please try again.");
         setSuccess(null);
       }
-
-      if (data) console.log(data);
+      console.log(data);
     } catch (error) {
       setError("Unexpected error. Please try again.");
     }
@@ -60,33 +58,48 @@ export default function SignUp() {
   };
 
   return (
-    <div>
+    <div className="utt-dark">
       <Navbar buttons={buttons} />
       <div className="min-h-screen bg-slate-800 text-gray-100">
         <div className="flex flex-col items-center justify-center min-h-screen">
           <h1 className="text-4xl font-bold text-amber-500 pb-10">Sign Up</h1>
-          <form onSubmit={signup} className="flex flex-col space-y-4 max-w-lg">
-            <StyledInput
+          <form className="flex flex-col space-y-4 max-w-lg">
+            <Input
+              classNames={{
+                inputWrapper: "bg-gray-800",
+                innerWrapper: "bg-gray-800",
+              }}
+              color="primary"
               type="email"
-              label="Email"
               id="email"
+              label="Email"
               value={`${credentials.email}`}
               width="w-72"
+              variant="faded"
               onChange={handleChange}
             />
-            <StyledInput
+            <Input
+              classNames={{
+                inputWrapper: "bg-gray-800",
+                innerWrapper: "bg-gray-800",
+              }}
+              color="primary"
               type="password"
-              label="Password"
               id="password"
+              label="Password"
               value={`${credentials.password}`}
+              variant="faded"
               width="w-72"
               onChange={handleChange}
             />
 
             <div className="w-72 pt-10">
-              <button className="p-2 bg-amber-500 text-gray-800 font-bold rounded-lg w-full">
+              <Button
+                onClick={signup}
+                className="p-2 bg-amber-500 text-gray-800 font-bold rounded-lg w-full"
+              >
                 Sign Up
-              </button>
+              </Button>
             </div>
           </form>
           {success && <p className="text-emerald-400 mt-4">{success}</p>}
