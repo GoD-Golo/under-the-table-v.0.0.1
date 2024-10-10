@@ -5,7 +5,6 @@ const StyledInput: React.FC<StyledInputProps> = ({
   type,
   id,
   width,
-  onChange,
 }) => {
   return (
     <>
@@ -17,7 +16,6 @@ const StyledInput: React.FC<StyledInputProps> = ({
         id={id}
         name={id}
         className={`m-0 p-2 text-amber-500 ring-amber-400 bg-slate-600 rounded-lg ${width} hover:ring-2 outline-amber-500`}
-        onChange={onChange}
       />
     </>
   );
