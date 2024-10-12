@@ -1,6 +1,6 @@
 "use client";
-import { useRouter } from "next/navigation";
-import { useSearchParams } from "next/navigation";
+// import { useRouter } from "next/navigation";
+// import { useSearchParams } from "next/navigation";
 
 import Navbar from "@/components/Navbar";
 import { NavbarButtons } from "@/types/navbar";
@@ -24,8 +24,8 @@ const buttons: NavbarButtons[] = [
 ];
 
 export default function UserId() {
-  const router = useRouter();
-  const userId = useSearchParams().get("userId");
+  // const router = useRouter();
+  // const userId = useSearchParams().get("userId");
 
   return (
     <div className="min-h-screen bg-slate-800 text-gray-100">
