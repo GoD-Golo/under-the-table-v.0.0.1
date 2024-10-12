@@ -26,11 +26,20 @@ export default function SignUp() {
 
   const signup = async () => {
     try {
+      if (!credentials.email || !credentials.password) {
+        setError("Please fill out all fields");
+        setSuccess(null);
+
+        return;
+      }
+
       setLoading(true);
+
       let { data, error } = await supabase.auth.signUp({
         email: credentials.email,
         password: credentials.password,
       });
+
       setLoading(false);
 
       if (error) {
@@ -67,7 +76,7 @@ export default function SignUp() {
                 innerWrapper: "bg-gray-800",
               }}
               color="primary"
-              errorMessage={error ? "Please try again" : false}
+              errorMessage={error}
               id="email"
               isInvalid={!!error}
               label="Email"
@@ -83,7 +92,7 @@ export default function SignUp() {
                 innerWrapper: "bg-gray-800",
               }}
               color="primary"
-              errorMessage={error ? "Please try again" : false}
+              errorMessage={error}
               id="password"
               isInvalid={!!error}
               label="Password"
