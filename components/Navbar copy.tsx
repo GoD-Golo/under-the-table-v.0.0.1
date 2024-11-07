@@ -1,6 +1,5 @@
+import { NavbarButtonsList } from "@/utils/types";
 import Link from "next/link";
-
-import { NavbarButtonsList } from "@/types/navbar";
 
 export default function Navbar(buttonsList: NavbarButtonsList) {
   return (

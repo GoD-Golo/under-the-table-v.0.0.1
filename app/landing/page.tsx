@@ -4,8 +4,7 @@ import Pricing from "@/components/Pricing";
 import Footer from "@/components/Footer";
 import Testimonials from "@/components/Testimonials";
 import Navbar from "@/components/Navbar";
-
-import { NavbarButtons } from "@/utils/types";
+import { NavbarButtons } from "@/types/navbar";
 
 const buttons: NavbarButtons[] = [
   {
